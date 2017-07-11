@@ -1,6 +1,39 @@
 import React from 'react'
 import { string } from 'prop-types'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+
+const ShowCard = props =>
+	<StyledLink to={`/details/${props.imdbID}`}>
+		<CardWrapper>
+			<CardImg>
+				<img alt={`${props.title}`} src={`/public/img/posters/${props.poster}`} />
+			</CardImg>
+			<CardText>
+				<Title>
+					{props.title}
+				</Title>
+				<h4>
+					({props.year})
+				</h4>
+				<p>
+					{props.description}
+				</p>
+			</CardText>
+		</CardWrapper>
+	</StyledLink>
+
+ShowCard.propTypes = {
+	title: string.isRequired,
+	poster: string.isRequired,
+	year: string.isRequired,
+	description: string.isRequired,
+	imdbID: string.isRequired
+}
+
+const StyledLink = styled(Link)`
+	text-decoration: none;
+`
 
 const CardWrapper = styled.div`
 	width: 48%;
@@ -40,39 +73,5 @@ const CardText = styled.div`
 		color: #ababbb;
 	}
 `
-
-const ShowCard = props =>
-	<CardWrapper>
-		<CardImg>
-			<img alt={`${props.title}`} src={`/public/img/posters/${props.poster}`} />
-		</CardImg>
-		<CardText>
-			<Title>
-				{props.title}
-			</Title>
-			<h4>
-				({props.year})
-			</h4>
-			<p>
-				{props.description}
-			</p>
-		</CardText>
-	</CardWrapper>
-
-ShowCard.propTypes = {
-	title: string.isRequired,
-	poster: string.isRequired,
-	year: string.isRequired,
-	description: string.isRequired
-}
-
-// ShowCard.propTypes = {
-// 	show: shape({
-// 		title: string.isRequired,
-// 		poster: string.isRequired,
-// 		year: string.isRequired,
-// 		description: string.isRequired
-// 	}).isRequired
-// }
 
 export default ShowCard

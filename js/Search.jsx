@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import ShowCard from './ShowCard'
+import Header from './Header'
 
 class Search extends Component {
 	defaultProps = {
@@ -22,9 +23,7 @@ class Search extends Component {
 		return (
 			<Container>
 				<SearchNav>
-					<Header>
-						{'Notflix'}
-					</Header>
+					<Header />
 					<SearchInput
 						value={this.state.searchTerm}
 						onChange={this.handleSearchInputChange}
@@ -44,12 +43,6 @@ class Search extends Component {
 		)
 	}
 }
-
-const Header = styled.h1`
-	font-size: 32px;
-	font-family: sans-serif;
-	color: #3ec770;
-`
 
 const Container = styled.div`
 	width: 80%;
